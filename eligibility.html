@@ -185,7 +185,7 @@
             </fieldset>
 
             <div id="prerequisite-details" hidden>
-              <div style="background-color: #fff; padding: 2.4rem; border: 1px solid #dfe1e2; border-radius: 0.5rem; margin-top: 2rem;">
+              <div class="section-indicator section-indicator--small" data-section="1" style="background-color: #fff; padding: 2.4rem 2.4rem 2.4rem 5rem; border: 1px solid #dfe1e2; border-radius: 0.5rem; margin-top: 2rem;">
                 <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 0.5rem 0;">Prerequisite</h3>
                 <p class="app-builder-content__text">Applicants must hold the selected prerequisite license before applying through this application. The system validates eligibility using the selected intra-affiliation.</p>
 
@@ -235,6 +235,63 @@
                   </div>
                 </fieldset>
               </div>
+
+              <div class="section-indicator section-indicator--small" data-section="2" style="background-color: #fff; padding: 2.4rem 2.4rem 2.4rem 5rem; border: 1px solid #dfe1e2; border-radius: 0.5rem; margin-top: 2rem;">
+                <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 0.5rem 0;">Expiration</h3>
+                <p class="app-builder-content__text">Choose how the end/expiration date for the credential will be calculated.</p>
+
+                <fieldset class="usa-fieldset margin-top-1">
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="expiration-type-fixed-date" type="radio" name="expiration-type" value="fixed-date">
+                    <label class="usa-radio__label" for="expiration-type-fixed-date">Fixed Date</label>
+                  </div>
+
+                  <div id="expiration-fixed-date-config" hidden style="margin: 2rem 0 1.5rem 2.7rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: end;">
+                      <div class="margin-bottom-2">
+                        <label class="usa-label" for="expiration-end-date">End Date <span class="field-required">Required</span></label>
+                        <div class="date-picker-wrapper">
+                          <input class="usa-input" id="expiration-end-date" name="expiration-end-date" type="text" placeholder="MM/DD/YYYY" required>
+                          <button type="button" class="date-picker-button" aria-label="Select date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                              <line x1="16" y1="2" x2="16" y2="6"></line>
+                              <line x1="8" y1="2" x2="8" y2="6"></line>
+                              <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="usa-checkbox margin-bottom-2">
+                        <!-- <label class="usa-label" style="visibility: hidden;">Recurring</label> -->
+                        <input class="usa-checkbox__input" id="expiration-recurring" type="checkbox" name="expiration-recurring">
+                        <label class="usa-checkbox__label" for="expiration-recurring" style="margin-top: -40px;">Recurring date of every year</label>
+                      </div>
+                      <div class="usa-form-group margin-bottom-2" style="max-width: 220px;">
+                        <label class="usa-label" for="expiration-year-window">Add a year window <span class="field-required">Required</span></label>
+                        <input class="usa-input" id="expiration-year-window" name="expiration-year-window" type="text" value="0">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="expiration-type-timeframe" type="radio" name="expiration-type" value="timeframe">
+                    <label class="usa-radio__label" for="expiration-type-timeframe">Timeframe</label>
+                  </div>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="expiration-type-conditional-date" type="radio" name="expiration-type" value="conditional-date">
+                    <label class="usa-radio__label" for="expiration-type-conditional-date">Conditional Date</label>
+                  </div>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="expiration-type-inherit-prerequisite" type="radio" name="expiration-type" value="inherit-prerequisite-expiration">
+                    <label class="usa-radio__label" for="expiration-type-inherit-prerequisite">Inherit Prerequisite License Expiration</label>
+                  </div>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="expiration-type-use-prerequisite-cycle" type="radio" name="expiration-type" value="use-prerequisite-cycle">
+                    <label class="usa-radio__label" for="expiration-type-use-prerequisite-cycle">Use Prerequisite License Cycle</label>
+                  </div>
+                </fieldset>
+              </div>
             </div>
           </div>
 
@@ -254,6 +311,14 @@
     document.querySelectorAll('input[name="prerequisite-license"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
         prerequisiteDetails.hidden = !prerequisiteYes.checked;
+      });
+    });
+
+    var expirationFixedDate = document.getElementById('expiration-type-fixed-date');
+    var expirationFixedDateConfig = document.getElementById('expiration-fixed-date-config');
+    document.querySelectorAll('input[name="expiration-type"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        expirationFixedDateConfig.hidden = !expirationFixedDate.checked;
       });
     });
   </script>
