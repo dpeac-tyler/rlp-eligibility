@@ -179,10 +179,63 @@
                 <label class="usa-radio__label" for="prerequisite-license-yes">Yes</label>
               </div>
               <div class="usa-radio">
-                <input class="usa-radio__input" id="prerequisite-license-no" type="radio" name="prerequisite-license" value="no">
+                <input class="usa-radio__input" id="prerequisite-license-no" type="radio" name="prerequisite-license" value="no" checked>
                 <label class="usa-radio__label" for="prerequisite-license-no">No</label>
               </div>
             </fieldset>
+
+            <div id="prerequisite-details" hidden>
+              <div style="background-color: #fff; padding: 2.4rem; border: 1px solid #dfe1e2; border-radius: 0.5rem; margin-top: 2rem;">
+                <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 0.5rem 0;">Prerequisite</h3>
+                <p class="app-builder-content__text">Applicants must hold the selected prerequisite license before applying through this application. The system validates eligibility using the selected intra-affiliation.</p>
+
+                <div class="usa-form-group" style="margin-top: 1rem;">
+                  <label class="usa-label" for="prerequisite-select">Prerequisite <span class="field-required">Required</span></label>
+                  <select class="usa-select" id="prerequisite-select" name="prerequisite-select">
+                    <option value="">Please Select</option>
+                    <option value="firearm-business-license">Firearm Business License</option>
+                    <option value="professional-engineer">Professional Engineer</option>
+                    <option value="contractor-license">Contractor License</option>
+                    <option value="fishing-guide-permit">Fishing Guide Permit</option>
+                    <option value="wildlife-rehabilitation">Wildlife Rehabilitation</option>
+                  </select>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+
+                <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 0.5rem 0;">Eligible Status</h3>
+                <p class="app-builder-content__text">Specify the required status of the applicant's prerequisite license.</p>
+
+                <fieldset class="usa-fieldset margin-top-1">
+                  <legend class="usa-label">Status <span class="field-required">Required</span></legend>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="eligible-status-active" type="radio" name="eligible-status" value="active">
+                    <label class="usa-radio__label" for="eligible-status-active">Active</label>
+                  </div>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="eligible-status-any" type="radio" name="eligible-status" value="any">
+                    <label class="usa-radio__label" for="eligible-status-any">Any</label>
+                  </div>
+                </fieldset>
+
+                <hr style="border: none; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+
+                <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 0.5rem 0;">Post-Issuance Action</h3>
+                <p class="app-builder-content__text">Specify what action the system should take on the prerequisite license after issuing the new license.</p>
+
+                <fieldset class="usa-fieldset margin-top-1">
+                  <legend class="usa-label">Post-Issuance <span class="field-required">Required</span></legend>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="post-issuance-no-action" type="radio" name="post-issuance" value="no-action">
+                    <label class="usa-radio__label" for="post-issuance-no-action">No Action</label>
+                  </div>
+                  <div class="usa-radio">
+                    <input class="usa-radio__input" id="post-issuance-end-prerequisite" type="radio" name="post-issuance" value="end-prerequisite">
+                    <label class="usa-radio__label" for="post-issuance-end-prerequisite">End Prerequisite License</label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
           </div>
 
           <div class="app-builder-button-container">
@@ -194,6 +247,16 @@
 
     </main>
   </div>
+
+  <script>
+    var prerequisiteYes = document.getElementById('prerequisite-license-yes');
+    var prerequisiteDetails = document.getElementById('prerequisite-details');
+    document.querySelectorAll('input[name="prerequisite-license"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        prerequisiteDetails.hidden = !prerequisiteYes.checked;
+      });
+    });
+  </script>
 </body>
 
 </html>
