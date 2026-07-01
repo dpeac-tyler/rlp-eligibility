@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Management - RLP</title>
+  <title>Eligibility - RLP</title>
   <!-- Custom RLP Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -147,15 +147,15 @@
                 <a class="usa-step-indicator__segment-label" href="form-number-deactivation.html">Form No., Deactivation &amp; Search Terms</a>
               </li>
               <div class="step-connector-line"></div>
-              <li class="usa-step-indicator__segment usa-step-indicator__segment--current">
+              <li class="usa-step-indicator__segment usa-step-indicator__segment--complete">
                 <a class="usa-step-indicator__segment-label" href="task-management.html">Task Management</a>
               </li>
               <div class="step-connector-line"></div>
-              <li class="usa-step-indicator__segment">
+              <li class="usa-step-indicator__segment usa-step-indicator__segment--complete">
                 <a class="usa-step-indicator__segment-label" href="external-integration.html">External Integrations</a>
               </li>
               <div class="step-connector-line"></div>
-              <li class="usa-step-indicator__segment">
+              <li class="usa-step-indicator__segment usa-step-indicator__segment--current">
                 <a class="usa-step-indicator__segment-label" href="eligibility.html">Eligibility</a>
               </li>
             </ol>
@@ -164,119 +164,17 @@
 
         <!-- Right content area -->
         <div class="app-builder-content">
-          <h1 class="app-builder-content__heading">Task Management</h1>
-
-          <p class="app-builder-content__text app-builder-content__text--lg-margin">
-            In the Task Management section, define the tasks and which roles(s) have permissions to review them as part of the submission review process.
-          </p>
-
-          <!-- Icon Key (above section) -->
-          <div class="usa-accordion usa-accordion--bordered" style="margin-bottom: 20px;">
-            <h3 class="usa-accordion__heading">
-              <button type="button" class="usa-accordion__button" aria-expanded="false" aria-controls="task-mgmt-icon-key">
-                Icon Key
-              </button>
-            </h3>
-            <div id="task-mgmt-icon-key" class="usa-accordion__content usa-prose" hidden>
-              <div class="icon-key-grid">
-                <div class="icon-key-item">
-                  <img src="assets/icon-delete.png" alt="Delete Task icon" width="24" height="24">
-                  <span>- Delete Task</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Section 11: Task List -->
-          <div class="section-indicator" data-section="11">
-            <h2 class="app-builder-content__subheading" style="font-size: 2.2rem;">Task List</h2>
-
-            <p class="app-builder-content__text">You may add up to five (5) task(s) to your review process. The order in which the task(s) appear below will be reflected in the review process.</p>
-
-            <p class="app-builder-content__text">For each task, select the User Group that will be assigned to that task. The assigned user group will have the following permissions on the selectable task: Claim, Approve, Reject, Deny, and Unclaim.</p>
-
-            <p class="app-builder-content__text">If you need to review user groups within your organization, go to settings | Users/Groups from the Home page prior to setting permissions for this application.</p>
-
-            <p class="app-builder-content__text"><strong>Standard</strong> - Allows you to use the standard task names as your task naming convention, Task x of y, e.g. for a two-step process Task 1 of 2, Task 2 of 2.</p>
-
-            <p class="app-builder-content__text"><strong>Agency Defined</strong> - Allows you to select task names from those defined by your agency.</p>
-
-            <fieldset class="usa-fieldset margin-top-3">
-              <legend class="usa-label">Would you like Standard or Agency Defined task naming? <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="task-naming-standard" type="radio" name="task-naming" value="standard">
-                <label class="usa-radio__label" for="task-naming-standard">Standard</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="task-naming-agency" type="radio" name="task-naming" value="agency-defined">
-                <label class="usa-radio__label" for="task-naming-agency">Agency Defined</label>
-              </div>
-            </fieldset>
-
-            <!-- Task 1 -->
-            <div class="section-indicator section-indicator--small" data-section="1" style="background-color: #fff; padding: 2.4rem 2.4rem 2.4rem 5rem; border: 1px solid #dfe1e2; border-radius: 0.5rem; margin-top: 2rem;">
-              <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 0.5rem 0;">Task</h3>
-              <p class="app-builder-content__text">Add a Task, then add Roles to a task.</p>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                <div class="usa-form-group">
-                  <label class="usa-label" for="task-name-1">Task Name <span class="field-required">Required</span></label>
-                  <select class="usa-select" id="task-name-1" name="task-name-1">
-                    <option value="">Please Select</option>
-                    <option value="task-name-1">Task Name 1</option>
-                    <option value="task-name-2">Task Name 2</option>
-                    <option value="task-name-3">Task Name 3</option>
-                    <option value="task-name-4">Task Name 4</option>
-                    <option value="task-name-5">Task Name 5</option>
-                  </select>
-                </div>
-                <div class="usa-form-group">
-                  <label class="usa-label" for="user-group-1">User Group <span class="field-required">Required</span></label>
-                  <select class="usa-select" id="user-group-1" name="user-group-1">
-                    <option value="">Please Select</option>
-                    <option value="user-group-1">User Group 1</option>
-                    <option value="user-group-2">User Group 2</option>
-                    <option value="user-group-3">User Group 3</option>
-                    <option value="user-group-4">User Group 4</option>
-                    <option value="user-group-5">User Group 5</option>
-                  </select>
-                </div>
-              </div>
-
-              <p class="app-builder-content__text" style="margin-top: 1.5rem;">Click the Add Checklist Item to associate the checklist items with the task. Checklist items will be displayed in the order they are added.</p>
-
-              <button type="button" class="usa-button usa-button--accent-warm">Add Checklist Item</button>
-            </div>
-
-            <button type="button" class="usa-button usa-button--accent-warm" style="margin-top: 1.5rem;">Add Task</button>
-
-          </div>
+          <h1 class="app-builder-content__heading">Eligibility</h1>
 
           <div class="app-builder-button-container">
-            <a href="form-number-deactivation.html" class="usa-button usa-button--outline">Back</a>
-            <a href="external-integration.html" class="usa-button">Next</a>
+            <a href="external-integration.html" class="usa-button usa-button--outline">Back</a>
+            <a href="document-upload.html" class="usa-button">Next</a>
           </div>
         </div>
       </div>
 
     </main>
   </div>
-
-  <script>
-    document.querySelectorAll('.usa-accordion__button').forEach(function(button) {
-      button.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        var content = document.getElementById(this.getAttribute('aria-controls'));
-        if (expanded) {
-          this.setAttribute('aria-expanded', 'false');
-          content.setAttribute('hidden', '');
-        } else {
-          this.setAttribute('aria-expanded', 'true');
-          content.removeAttribute('hidden');
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>
