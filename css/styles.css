@@ -2505,9 +2505,54 @@ a.usa-step-indicator__segment-label:hover {
   border-radius: 50%;
   text-align: center;
   line-height: 20px;
-  font-size: 12px;
+  font-size: 15px;
   margin-left: 4px;
   cursor: help;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-box {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1b1b1b;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.3;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.4rem;
+  white-space: normal;
+  width: max-content;
+  max-width: 280px;
+  text-align: left;
+  z-index: 100;
+  transition: opacity 0.15s ease-in-out;
+  pointer-events: none;
+}
+
+.tooltip-box::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1b1b1b transparent transparent transparent;
+}
+
+.tooltip-wrapper:hover .tooltip-box,
+.tooltip-wrapper:focus-within .tooltip-box {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Question Row Styles - Review Questions Page

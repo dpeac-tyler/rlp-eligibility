@@ -265,10 +265,20 @@
                       <div class="usa-checkbox margin-bottom-2">
                         <!-- <label class="usa-label" style="visibility: hidden;">Recurring</label> -->
                         <input class="usa-checkbox__input" id="expiration-recurring" type="checkbox" name="expiration-recurring">
-                        <label class="usa-checkbox__label" for="expiration-recurring" style="margin-top: -40px;">Recurring date of every year</label>
+                        <label class="usa-checkbox__label" for="expiration-recurring" style="margin-top: -40px;">Recurring date of every year
+                          <span class="tooltip-wrapper">
+                            <span class="tooltip-icon" tabindex="0" aria-describedby="tooltip-recurring-date">?</span>
+                            <span class="tooltip-box" id="tooltip-recurring-date" role="tooltip">End Date is same date every year.</span>
+                          </span>
+                        </label>
                       </div>
-                      <div class="usa-form-group margin-bottom-2" style="max-width: 220px;">
-                        <label class="usa-label" for="expiration-year-window">Add a year window <span class="field-required">Required</span></label>
+                      <div class="usa-form-group margin-bottom-2" style="max-width: 250px;">
+                        <label class="usa-label" for="expiration-year-window">Add a year window <span class="field-required">Required</span>
+                          <span class="tooltip-wrapper">
+                            <span class="tooltip-icon" tabindex="0" aria-describedby="tooltip-year-window">?</span>
+                            <span class="tooltip-box" id="tooltip-year-window" role="tooltip">Based on the issuance date, the number of days prior to the recurring date to add a year to the end date. The number includes the recurring date, e.g. a 12/31 recurring date with 7 days results in the seven-day range 12/25-12/31.</span>
+                          </span>
+                        </label>
                         <input class="usa-input" id="expiration-year-window" name="expiration-year-window" type="text" value="0">
                       </div>
                     </div>
@@ -278,6 +288,34 @@
                     <input class="usa-radio__input" id="expiration-type-timeframe" type="radio" name="expiration-type" value="timeframe">
                     <label class="usa-radio__label" for="expiration-type-timeframe">Timeframe</label>
                   </div>
+
+                  <div id="expiration-timeframe-config" hidden style="margin: 2rem 0 1.5rem 2.7rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: end;">
+                      <div class="usa-form-group margin-bottom-2">
+                        <label class="usa-label" for="expiration-timeframe-number">Number <span class="field-required">Required</span></label>
+                        <input class="usa-input" id="expiration-timeframe-number" name="expiration-timeframe-number" type="text" required>
+                      </div>
+                      <div class="usa-form-group margin-bottom-2">
+                        <label class="usa-label" for="expiration-timeframe-period">Period <span class="field-required">Required</span></label>
+                        <select class="usa-select" id="expiration-timeframe-period" name="expiration-timeframe-period" required>
+                          <option value="">Please Select</option>
+                          <option value="years">Years</option>
+                          <option value="months">Months</option>
+                          <option value="days">Days</option>
+                        </select>
+                      </div>
+                      <div class="usa-checkbox margin-bottom-2" style="margin-bottom: 27px;">
+                        <input class="usa-checkbox__input" id="expiration-timeframe-end-of-month" type="checkbox" name="expiration-timeframe-end-of-month">
+                        <label class="usa-checkbox__label" for="expiration-timeframe-end-of-month">End of month
+                          <span class="tooltip-wrapper">
+                            <span class="tooltip-icon" tabindex="0" aria-describedby="tooltip-end-of-month">?</span>
+                            <span class="tooltip-box" id="tooltip-end-of-month" role="tooltip">Round and forward to last date of the month</span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="usa-radio">
                     <input class="usa-radio__input" id="expiration-type-conditional-date" type="radio" name="expiration-type" value="conditional-date">
                     <label class="usa-radio__label" for="expiration-type-conditional-date">Conditional Date</label>
@@ -316,9 +354,12 @@
 
     var expirationFixedDate = document.getElementById('expiration-type-fixed-date');
     var expirationFixedDateConfig = document.getElementById('expiration-fixed-date-config');
+    var expirationTimeframe = document.getElementById('expiration-type-timeframe');
+    var expirationTimeframeConfig = document.getElementById('expiration-timeframe-config');
     document.querySelectorAll('input[name="expiration-type"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
         expirationFixedDateConfig.hidden = !expirationFixedDate.checked;
+        expirationTimeframeConfig.hidden = !expirationTimeframe.checked;
       });
     });
   </script>
