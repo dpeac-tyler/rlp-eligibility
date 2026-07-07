@@ -174,17 +174,159 @@
             <h2 class="app-builder-content__subheading" style="font-size: 2.2rem;">End Date</h2>
             <fieldset class="usa-fieldset">
               <legend class="usa-label">Choose the end date for this license. <span class="field-required">Required</span></legend>
+
               <div class="usa-radio">
                 <input class="usa-radio__input" id="end-date-fixed" type="radio" name="end-date" value="fixed-date">
                 <label class="usa-radio__label" for="end-date-fixed">Fixed Date</label>
               </div>
+
+              <div id="end-date-fixed-config" hidden style="margin: 2rem 0 1.5rem 2.7rem; background: #fff; padding: 2.4rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: end;">
+                  <div class="margin-bottom-2">
+                    <label class="usa-label" for="end-date-fixed-date">End Date <span class="field-required">Required</span></label>
+                    <div class="date-picker-wrapper">
+                      <input class="usa-input" id="end-date-fixed-date" name="end-date-fixed-date" type="text" placeholder="MM/DD/YYYY" required>
+                      <button type="button" class="date-picker-button" aria-label="Select date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="usa-checkbox margin-bottom-2">
+                    <input class="usa-checkbox__input" id="end-date-recurring" type="checkbox" name="end-date-recurring">
+                    <label class="usa-checkbox__label" for="end-date-recurring" style="margin-top: -40px;">Recurring date of every year
+                      <span class="tooltip-wrapper">
+                        <span class="tooltip-icon" tabindex="0" aria-describedby="tooltip-end-date-recurring">?</span>
+                        <span class="tooltip-box" id="tooltip-end-date-recurring" role="tooltip">End Date is same date every year.</span>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="usa-form-group margin-bottom-2" style="max-width: 250px;">
+                    <label class="usa-label" for="end-date-year-window">Add a year window <span class="field-required">Required</span>
+                      <span class="tooltip-wrapper">
+                        <span class="tooltip-icon" tabindex="0" aria-describedby="tooltip-end-date-year-window">?</span>
+                        <span class="tooltip-box" id="tooltip-end-date-year-window" role="tooltip">Based on the issuance date, the number of days prior to the recurring date to add a year to the end date. The number includes the recurring date, e.g. a 12/31 recurring date with 7 days results in the seven-day range 12/25-12/31.</span>
+                      </span>
+                    </label>
+                    <input class="usa-input" id="end-date-year-window" name="end-date-year-window" type="text" value="0">
+                  </div>
+                </div>
+              </div>
+
               <div class="usa-radio">
                 <input class="usa-radio__input" id="end-date-timeframe" type="radio" name="end-date" value="timeframe">
                 <label class="usa-radio__label" for="end-date-timeframe">Timeframe</label>
               </div>
+
+              <div id="end-date-timeframe-config" hidden style="margin: 2rem 0 1.5rem 2.7rem; background: #fff; padding: 2.4rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: end;">
+                  <div class="usa-form-group margin-bottom-2">
+                    <label class="usa-label" for="end-date-timeframe-number">Number <span class="field-required">Required</span></label>
+                    <input class="usa-input" id="end-date-timeframe-number" name="end-date-timeframe-number" type="text" required>
+                  </div>
+                  <div class="usa-form-group margin-bottom-2">
+                    <label class="usa-label" for="end-date-timeframe-period">Period <span class="field-required">Required</span></label>
+                    <select class="usa-select" id="end-date-timeframe-period" name="end-date-timeframe-period" required>
+                      <option value="">Please Select</option>
+                      <option value="years">Years</option>
+                      <option value="months">Months</option>
+                      <option value="days">Days</option>
+                    </select>
+                  </div>
+                  <div class="usa-checkbox margin-bottom-2" style="margin-bottom: 27px;">
+                    <input class="usa-checkbox__input" id="end-date-timeframe-end-of-month" type="checkbox" name="end-date-timeframe-end-of-month">
+                    <label class="usa-checkbox__label" for="end-date-timeframe-end-of-month">End of month
+                      <span class="tooltip-wrapper">
+                        <span class="tooltip-icon" tabindex="0" aria-describedby="tooltip-end-date-end-of-month">?</span>
+                        <span class="tooltip-box" id="tooltip-end-date-end-of-month" role="tooltip">Round and forward to last date of the month</span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
               <div class="usa-radio">
                 <input class="usa-radio__input" id="end-date-conditional" type="radio" name="end-date" value="conditional-date">
                 <label class="usa-radio__label" for="end-date-conditional">Conditional Date</label>
+              </div>
+
+              <div id="end-date-conditional-config" hidden style="margin: 2rem 0 1.5rem 2.7rem; background: #fff; padding: 2.4rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: end;">
+                  <div class="margin-bottom-2">
+                    <label class="usa-label" for="end-date-cutoff-date">Cutoff Date <span class="field-required">Required</span></label>
+                    <div class="date-picker-wrapper">
+                      <input class="usa-input" id="end-date-cutoff-date" name="end-date-cutoff-date" type="text" placeholder="MM/DD/YYYY" required>
+                      <button type="button" class="date-picker-button" aria-label="Select date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="margin-bottom-2">
+                    <label class="usa-label" for="end-date-before-or-on-date">Before or On Date <span class="field-required">Required</span></label>
+                    <div class="date-picker-wrapper">
+                      <input class="usa-input" id="end-date-before-or-on-date" name="end-date-before-or-on-date" type="text" placeholder="MM/DD/YYYY" required>
+                      <button type="button" class="date-picker-button" aria-label="Select date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="margin-bottom-2">
+                    <label class="usa-label" for="end-date-after-date">After Date <span class="field-required">Required</span></label>
+                    <div class="date-picker-wrapper">
+                      <input class="usa-input" id="end-date-after-date" name="end-date-after-date" type="text" placeholder="MM/DD/YYYY" required>
+                      <button type="button" class="date-picker-button" aria-label="Select date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="end-date-inherit-prerequisite" type="radio" name="end-date" value="inherit-prerequisite-expiration">
+                <label class="usa-radio__label" for="end-date-inherit-prerequisite">Inherit Prerequisite License Expiration</label>
+              </div>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="end-date-use-prerequisite-cycle" type="radio" name="end-date" value="use-prerequisite-cycle">
+                <label class="usa-radio__label" for="end-date-use-prerequisite-cycle">Use Prerequisite License Cycle</label>
+              </div>
+
+              <div id="end-date-prerequisite-cycle-config" hidden style="margin: 2rem 0 1.5rem 2.7rem; background: #fff; padding: 2.4rem;">
+                <p class="app-builder-content__text">The expiration is calculated from the prerequisite license issuance date. <strong>(prerequisite date + licensing term number = expiration date)</strong></p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; max-width: 66.666%;">
+                  <div class="usa-form-group margin-bottom-2">
+                    <label class="usa-label" for="end-date-cycle-term-number">Licensing Term Number <span class="field-required">Required</span></label>
+                    <input class="usa-input" id="end-date-cycle-term-number" name="end-date-cycle-term-number" type="text" required>
+                  </div>
+                  <div class="usa-form-group margin-bottom-2">
+                    <label class="usa-label" for="end-date-cycle-period">Period <span class="field-required">Required</span></label>
+                    <select class="usa-select" id="end-date-cycle-period" name="end-date-cycle-period" required>
+                      <option value="">Please Select</option>
+                      <option value="years">Years</option>
+                      <option value="months">Months</option>
+                      <option value="days">Days</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </fieldset>
           </div>
@@ -198,6 +340,25 @@
 
     </main>
   </div>
+
+  <script>
+    var endDateFixed = document.getElementById('end-date-fixed');
+    var endDateFixedConfig = document.getElementById('end-date-fixed-config');
+    var endDateTimeframe = document.getElementById('end-date-timeframe');
+    var endDateTimeframeConfig = document.getElementById('end-date-timeframe-config');
+    var endDateConditional = document.getElementById('end-date-conditional');
+    var endDateConditionalConfig = document.getElementById('end-date-conditional-config');
+    var endDateUsePrerequisiteCycle = document.getElementById('end-date-use-prerequisite-cycle');
+    var endDatePrerequisiteCycleConfig = document.getElementById('end-date-prerequisite-cycle-config');
+    document.querySelectorAll('input[name="end-date"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        endDateFixedConfig.hidden = !endDateFixed.checked;
+        endDateTimeframeConfig.hidden = !endDateTimeframe.checked;
+        endDateConditionalConfig.hidden = !endDateConditional.checked;
+        endDatePrerequisiteCycleConfig.hidden = !endDateUsePrerequisiteCycle.checked;
+      });
+    });
+  </script>
 </body>
 
 </html>
